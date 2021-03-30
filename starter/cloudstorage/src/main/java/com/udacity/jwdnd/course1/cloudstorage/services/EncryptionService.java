@@ -7,12 +7,15 @@ import org.springframework.stereotype.Service;
 
 import javax.crypto.*;
 import javax.crypto.spec.SecretKeySpec;
+import javax.transaction.Transactional;
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.Base64;
 
 @Service
+@Transactional
 public class EncryptionService {
     private Logger logger = LoggerFactory.getLogger(EncryptionService.class);
 
@@ -46,5 +49,13 @@ public class EncryptionService {
         }
 
         return new String(decryptedValue);
+    }
+
+    // ADDED METHOD TO GENERATE A KEY FOR ENCRYPTION
+    public String generateKey() {
+        SecureRandom random = new SecureRandom();
+        byte[] key = new byte[16];
+        random.nextBytes(key);
+        return Base64.getEncoder().encodeToString(key);
     }
 }
