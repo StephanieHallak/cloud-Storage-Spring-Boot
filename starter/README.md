@@ -1,4 +1,4 @@
-#NOTES FROM STEPHANIE ABOUT THE PROJECT
+# NOTES FROM STEPHANIE ABOUT THE PROJECT
 
 In this project I learned how to use use spring boot and build ahead of the front end already done form, a backend that supports the actions needed.
 
